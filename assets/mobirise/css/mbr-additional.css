@@ -3496,7 +3496,7 @@ a {
 }
 .cid-ubCNZjGPR1 {
   display: flex;
-  background-color: #e76d03;
+  background-color: #bcef9b;
 }
 .cid-ubCNZjGPR1 .mbr-fallback-image.disabled {
   display: none;
@@ -3546,10 +3546,12 @@ a {
 }
 .cid-ubCNZjGPR1 .mbr-section-title {
   text-align: center;
+  color: #232323;
 }
 .cid-ubCNZjGPR1 .mbr-text,
 .cid-ubCNZjGPR1 .mbr-section-btn {
   text-align: left;
+  color: #232323;
 }
 .cid-uauwxh7Xaa {
   z-index: 1000;
