@@ -1,7 +1,7 @@
 {
   "settings": {
     "name": "Site 2024-04-20 19:51-clone",
-    "currentPage": "page14.html",
+    "currentPage": "index.html",
     "theme": {
       "name": "startm5",
       "title": "StartM5",
@@ -81,7 +81,7 @@
         "url": "https://fonts.googleapis.com/css?family=Lalezar:400"
       }
     ],
-    "uniqCompNum": 222,
+    "uniqCompNum": 225,
     "versionPublish": "5.9.11",
     "imageResize": true,
     "favicon": false,
@@ -5636,19 +5636,74 @@
         {
           "alias": false,
           "_styles": {
-            "background-color": "@bgColor",
-            "padding-top": "(@paddingTop * 15px)",
-            "padding-bottom": "(@paddingBottom * 15px)",
-            "img": {
-              "object-fit": "contain",
-              "border-radius": "0 !important"
+            "& when not (@fullScreen)": {
+              "padding-top": "(@paddingTop * 1rem)",
+              "padding-bottom": "(@paddingBottom * 1rem)"
+            },
+            "& when (@bg-type = \"color\")": {
+              "background-color": "@bg-value"
+            },
+            "& when (@bg-type = \"image\")": {
+              "background-image": "url(@bg-value)"
+            },
+            ".mbr-fallback-image.disabled": {
+              "display": "none"
+            },
+            ".mbr-fallback-image": {
+              "display": "block",
+              "background-size": "cover",
+              "background-position": "center center",
+              "width": "100%",
+              "height": "100%",
+              "position": "absolute",
+              "top": "0",
+              "& when (@bg-type = 'video')": {
+                "background-image": "url(@fallBackImage)"
+              }
+            },
+            ".card-wrapper": {
+              "border-radius": "4px",
+              "@media (max-width: 767px)": {
+                "padding": "1.5rem",
+                "padding-top": "(@contentPaddingTop * 1.5rem)",
+                "padding-bottom": "(@contentPaddingBottom * 1.5rem)"
+              },
+              "@media (min-width: 768px) and (max-width: 991px)": {
+                "padding": "2.25rem",
+                "padding-top": "(@contentPaddingTop * 3rem)",
+                "padding-bottom": "(@contentPaddingBottom * 3rem)"
+              },
+              "@media (min-width: 992px)": {
+                "padding": "4rem",
+                "padding-top": "(@contentPaddingTop * 3rem)",
+                "padding-bottom": "(@contentPaddingBottom * 3rem)"
+              }
+            },
+            ".wrap": {
+              "background": "url(@wrapBgImage)",
+              "background-repeat": "no-repeat",
+              "background-position": "center",
+              "background-size": "cover",
+              ".inner-wrap": {
+                "padding": "40px"
+              }
+            },
+            ".card-title": {
+              "color": "#ffffff",
+              "text-align": "center"
+            },
+            ".mbr-text": {
+              "color": "#000000"
+            },
+            ".mbr-text, .mbr-section-btn": {
+              "color": "#ffffff"
             }
           },
-          "_name": "image04",
+          "_name": "image07",
           "_sourceTheme": "startm5",
-          "_customHTML": "<section data-bs-version=\"5.1\" class=\"image03\" group=\"Image & Video\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" value=\"0\" step=\"1\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" value=\"0\" step=\"1\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Caption\" name=\"showText\">\n        <header>Background</header>\n        <input type=\"color\" title=\"Color\" name=\"bgColor\" value=\"#ffffff\">\n    </mbr-parameters>\n\n    <div class=\"image-block m-auto\">\n        <img src=\"@PROJECT_PATH@/assets/images/struktur-organisasi-1024x768.png\" alt=\"Mobirise\">\n        <div mbr-if=\"showText\">\n            <p class=\"mbr-text mt-4 pb-4 align-center mbr-fonts-style\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-text\">\n                Unlock your true path!\n            </p>\n        </div>\n    </div>\n</section>",
-          "_cid": "uaUSfXe0bw",
-          "_anchor": "image04-1r",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"image07\" group=\"Image & Video\" data-bg-video=\"{{bg.type == 'video' && bg.value.url}}\" mbr-class=\"{  'mbr-fullscreen': fullScreen,  'mbr-parallax-background': bg.parallax}\">\n  <mbr-parameters>\n    <header>Size</header>\n    <input type=\"checkbox\" title=\"Full Screen\" name=\"fullScreen\">\n    <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n    <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"12\" step=\"1\" value=\"6\">\n    <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"12\" step=\"1\" value=\"6\">\n    <input type=\"range\" inline title=\"Width\" name=\"cardWidth\" min=\"6\" max=\"12\" step=\"1\" value=\"12\">\n    <header>Show/Hide</header>\n    <input type=\"checkbox\" title=\"Title\" name=\"showTitle\">\n    <input type=\"checkbox\" title=\"Text\" name=\"showText\">\n    <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons\">\n    <input type=\"checkbox\" title=\"Caption\" name=\"showDescription\">\n\n    <header>Image</header>\n    <input type=\"image\" name=\"wrapBgImage\" title=\"Image\" value=\"@PROJECT_PATH@/assets/images/free-1-1024x768.png\">\n    <input type=\"range\" inline title=\"Top\" name=\"contentPaddingTop\" min=\"1\" max=\"10\" step=\"1\" value=\"10\">\n    <input type=\"range\" inline title=\"Bottom\" name=\"contentPaddingBottom\" min=\"1\" max=\"10\" step=\"1\" value=\"10\">\n\n    <header>Background</header>\n    <fieldset type=\"background\" name=\"bg\" parallax>\n      <input type=\"image\" title=\"Image\" value=\"../_images/background1.jpg\">\n      <input type=\"color\" title=\"Color\" value=\"#2c052c\" selected>\n      <input type=\"video\" title=\"Video\" value=\"https://vimeo.com/428046504\">\n    </fieldset>\n    <header condition=\"bg.type === 'video'\">Fallback Image</header>\n    <input type=\"image\" title=\"Fallback Image\" value=\"../_images/background1.jpg\" name=\"fallBackImage\" condition=\"bg.type === 'video'\">\n    <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\">\n    <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#ffffff\" condition=\"overlay && bg.type !== 'color'\">\n    <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.5\" condition=\"overlay && bg.type !== 'color'\">\n  </mbr-parameters>\n\n  <div class=\"mbr-fallback-image disabled\" mbr-if=\"bg.type == 'video'\"></div>\n  <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\"></div>\n  <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n    <div class=\"row justify-content-center\">\n      <div class=\"card col-12 col-lg-{{cardWidth}}\">\n        <div class=\"card-wrapper wrap\">\n          <div class=\"card-box align-center\">\n           <h1 class=\"card-title mbr-fonts-style\" mbr-theme-style=\"display-2\" mbr-if=\"showTitle\" data-app-selector=\".card-title\"><b>Holiday deals inside</b></h1>\n            <p class=\"mbr-text mbr-fonts-style mt-4 mb-4\" mbr-theme-style=\"display-7\" mbr-if=\"showText\" data-app-selector=\".mbr-text, .mbr-section-btn\">\n              Click any text to edit or style it. Select text to insert a link.</p>\n            <div mbr-buttons mbr-theme-style=\"display-7\" class=\"mbr-section-btn mt-4\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove\">\n              <a class=\"btn btn-danger\" href=\"https://mobiri.se\" data-app-placeholder=\"Type Text\">Shop now</a></div>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div mbr-if=\"showDescription\">\n      <p class=\"mbr-description mt-4 align-center mbr-fonts-style\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-description\">\n        Offer valid on select items only.\n      </p>\n    </div>\n  </div>\n</section>",
+          "_cid": "ubGzdwKSAD",
+          "_anchor": "image07-68",
           "_protectedParams": [],
           "_global": false,
           "_once": false,
